@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.isands.appliance.domain.Phone;
+import ru.isands.appliance.dto.PhoneDTO;
 import ru.isands.appliance.service.PhoneService;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class PhoneController {
 
     @GetMapping
     @Operation(summary = "Получить список всех смартфонов")
-    public ResponseEntity<List<Phone>> findAll() {
+    public ResponseEntity<List<PhoneDTO>> findAll() {
         return new ResponseEntity<>(phoneService.findAll(), HttpStatus.OK);
     }
 }

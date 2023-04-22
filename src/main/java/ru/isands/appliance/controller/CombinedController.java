@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.isands.appliance.domain.Appliance;
+import ru.isands.appliance.dto.AllDTO;
 import ru.isands.appliance.service.CombinedService;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class CombinedController {
 
     @GetMapping
     @Operation(summary = "Получить список всей техники")
-    public ResponseEntity<List<Appliance>> findAll() {
+    public ResponseEntity<List<AllDTO>> findAll() {
         return new ResponseEntity<>(combinedService.findAll(), HttpStatus.OK);
     }
 }

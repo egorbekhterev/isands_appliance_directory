@@ -2,10 +2,12 @@ package ru.isands.appliance.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.isands.appliance.domain.TV;
+import ru.isands.appliance.dto.TvDTO;
+import ru.isands.appliance.mapper.TvDtoMapper;
 import ru.isands.appliance.repository.TvRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author: Egor Bekhterev
@@ -18,7 +20,10 @@ public class TvService {
 
     private TvRepository tvRepository;
 
-    public List<TV> findAll() {
-        return tvRepository.findAll();
+    public List<TvDTO> findAll() {
+        return tvRepository.findAll()
+                .stream()
+                .map(TvDtoMapper::toDto)
+                .collect(Collectors.toList());
     }
 }

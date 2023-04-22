@@ -2,10 +2,14 @@ package ru.isands.appliance.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.isands.appliance.domain.Appliance;
-import ru.isands.appliance.repository.CombinedRepository;
+import ru.isands.appliance.dto.AllDTO;
+import ru.isands.appliance.dto.PhoneDTO;
+import ru.isands.appliance.dto.TvDTO;
+import ru.isands.appliance.mapper.AllDtoMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author: Egor Bekhterev
@@ -16,9 +20,17 @@ import java.util.List;
 @AllArgsConstructor
 public class CombinedService {
 
-    private CombinedRepository combinedRepository;
+    private PhoneService phoneService;
 
-    public List<Appliance> findAll() {
-        return combinedRepository.findAllWithModels();
+    private TvService tvService;
+
+    public List<AllDTO> findAll() {
+        List<PhoneDTO> phones = phoneService.findAll();
+        List<TvDTO> tvs = tvService.findAll();
+
+        return Stream
+                .concat(phones.stream(), tvs.stream())
+                .map(AllDtoMapper::toDto)
+                .collect(Collectors.toList());
     }
 }
