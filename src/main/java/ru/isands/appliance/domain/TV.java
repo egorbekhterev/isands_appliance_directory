@@ -2,7 +2,7 @@ package ru.isands.appliance.domain;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import ru.isands.appliance.domain.model.TVmodel;
+import ru.isands.appliance.domain.model.TvModel;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,5 +22,5 @@ public class TV extends Appliance {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "tv_id")
     @Schema(description = "Модели телевизоров в наличии")
-    private List<TVmodel> models = new ArrayList<>();
+    private List<TvModel> models = new ArrayList<>();
 }

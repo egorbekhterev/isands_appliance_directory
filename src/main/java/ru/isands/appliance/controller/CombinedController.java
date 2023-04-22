@@ -6,10 +6,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.isands.appliance.domain.TV;
-import ru.isands.appliance.service.TvService;
+import ru.isands.appliance.domain.Appliance;
+import ru.isands.appliance.service.CombinedService;
 
 import java.util.List;
 
@@ -20,15 +19,14 @@ import java.util.List;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/tv")
-@Tag(name = "Телевизоры", description = "Контроллер для работы с телевизорами")
-public class TvController {
+@Tag(name = "Вся техника", description = "Контроллер для работы с техникой")
+public class CombinedController {
 
-    private TvService tvService;
+    private CombinedService combinedService;
 
     @GetMapping
-    @Operation(summary = "Получить список всех телевизоров")
-    public ResponseEntity<List<TV>> findAll() {
-        return new ResponseEntity<>(tvService.findAll(), HttpStatus.OK);
+    @Operation(summary = "Получить список всей техники")
+    public ResponseEntity<List<Appliance>> findAll() {
+        return new ResponseEntity<>(combinedService.findAll(), HttpStatus.OK);
     }
 }

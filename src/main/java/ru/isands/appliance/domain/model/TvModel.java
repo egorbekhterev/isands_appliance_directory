@@ -1,5 +1,6 @@
 package ru.isands.appliance.domain.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -13,9 +14,12 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "tv_model")
-public class TVmodel extends Model {
+@Schema(description = "Доменная модель для моделей телевизоров")
+public class TvModel extends Model {
 
+    @Schema(description = "Категория")
     private String category;
 
+    @Schema(description = "Технология")
     private String technology;
 }

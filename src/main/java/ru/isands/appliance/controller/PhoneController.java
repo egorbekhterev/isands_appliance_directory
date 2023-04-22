@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.isands.appliance.domain.TV;
-import ru.isands.appliance.service.TvService;
+import ru.isands.appliance.domain.Phone;
+import ru.isands.appliance.service.PhoneService;
 
 import java.util.List;
 
@@ -20,15 +20,15 @@ import java.util.List;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/tv")
-@Tag(name = "Телевизоры", description = "Контроллер для работы с телевизорами")
-public class TvController {
+@RequestMapping("/phone")
+@Tag(name = "Смартфоны", description = "Контроллер для работы со смартфонами")
+public class PhoneController {
 
-    private TvService tvService;
+    private PhoneService phoneService;
 
     @GetMapping
-    @Operation(summary = "Получить список всех телевизоров")
-    public ResponseEntity<List<TV>> findAll() {
-        return new ResponseEntity<>(tvService.findAll(), HttpStatus.OK);
+    @Operation(summary = "Получить список всех смартфонов")
+    public ResponseEntity<List<Phone>> findAll() {
+        return new ResponseEntity<>(phoneService.findAll(), HttpStatus.OK);
     }
 }
