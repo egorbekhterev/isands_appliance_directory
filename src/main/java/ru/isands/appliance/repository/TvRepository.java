@@ -1,8 +1,11 @@
 package ru.isands.appliance.repository;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.CrudRepository;
 import ru.isands.appliance.domain.TV;
 
+import javax.persistence.QueryHint;
 import java.util.List;
 
 /**
@@ -13,4 +16,8 @@ import java.util.List;
 public interface TvRepository extends CrudRepository<TV, Integer> {
 
     List<TV> findAll();
+
+    @Query("SELECT DISTINCT t FROM TV t JOIN FETCH t.models m WHERE LOWER(m.color) = LOWER(:color)")
+    @QueryHints(value = @QueryHint(name = "org.hibernate.annotations.QueryHints.PASS_DISTINCT_THROUGH", value = "false"))
+    List<TV> findByColor(String color);
 }

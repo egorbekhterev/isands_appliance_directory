@@ -11,6 +11,7 @@ import lombok.Data;
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@Schema(description = "DTO модель с общими атрибутами для моделей различных видов техники")
 public class AllModelDTO extends ModelDTO {
 
     @Schema(description = "Категория")

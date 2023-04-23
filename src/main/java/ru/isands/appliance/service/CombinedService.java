@@ -33,4 +33,14 @@ public class CombinedService {
                 .map(AllDtoMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    public List<AllDTO> findByColor(String color) {
+        List<PhoneDTO> phones = phoneService.findByColor(color);
+        List<TvDTO> tvs = tvService.findByColor(color);
+
+        return Stream
+                .concat(phones.stream(), tvs.stream())
+                .map(AllDtoMapper::toDto)
+                .collect(Collectors.toList());
+    }
 }

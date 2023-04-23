@@ -26,4 +26,11 @@ public class TvService {
                 .map(TvDtoMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    public List<TvDTO> findByColor(String color) {
+        return tvRepository.findByColor(color)
+                .stream()
+                .map(TvDtoMapper::toDto)
+                .collect(Collectors.toList());
+    }
 }

@@ -13,6 +13,7 @@ import java.util.List;
  * @project: isands_appliance_directory
  */
 @Data
+@Schema(description = "DTO модель с общими атрибутами для различных видов техники")
 public class AllDTO extends ApplianceDTO {
 
     @Schema(description = "Модели в наличии")

@@ -38,6 +38,19 @@ public class PhoneDtoMapper {
                 .stream()
                 .map(PhoneDtoMapper::toModelDto)
                 .collect(Collectors.toList()));
+//        List<AllModelDTO> rsl = phone.getModels().stream()
+//                .map(PhoneDtoMapper::toModelDto)
+//                .collect(Collectors.toList());
+//        rsl.forEach(allModelDTO -> {
+//            PhoneDTO dto = new PhoneDTO();
+//            dto.setName(phone.getName());
+//            dto.setCountry(phone.getCountry());
+//            dto.setManufacturer(phone.getManufacturer());
+//            dto.setOnline(phone.isOnline());
+//            dto.setInstalment(phone.isInstalment());
+//            dto.setModel(allModelDTO);
+//            dtos.add(dto);
+//        });
         return dto;
     }
 }

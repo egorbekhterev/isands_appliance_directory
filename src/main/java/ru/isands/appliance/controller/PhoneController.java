@@ -5,9 +5,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.isands.appliance.dto.PhoneDTO;
 import ru.isands.appliance.service.PhoneService;
 
@@ -30,5 +28,23 @@ public class PhoneController {
     @Operation(summary = "Получить список всех смартфонов")
     public ResponseEntity<List<PhoneDTO>> findAll() {
         return new ResponseEntity<>(phoneService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sortPriceAsc")
+    @Operation(summary = "Получить список всех смартфонов цена по возрастанию")
+    public ResponseEntity<List<PhoneDTO>> findAllSortPriceAsc() {
+        return new ResponseEntity<>(phoneService.findAllSortPriceAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/color/{color}")
+    @Operation(summary = "Получить список всех смартфонов по цвету")
+    public ResponseEntity<List<PhoneDTO>> findByColor(@RequestParam String color) {
+        List<PhoneDTO> phones = phoneService.findByColor(color);
+
+        if (phones.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(phones, HttpStatus.OK);
     }
 }

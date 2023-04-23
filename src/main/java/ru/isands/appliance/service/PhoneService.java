@@ -26,4 +26,18 @@ public class PhoneService {
                 .map(PhoneDtoMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    public List<PhoneDTO> findByColor(String color) {
+        return phoneRepository.findByColor(color)
+              .stream()
+              .map(PhoneDtoMapper::toDto)
+              .collect(Collectors.toList());
+    }
+
+    public List<PhoneDTO> findAllSortPriceAsc() {
+        return phoneRepository.findAllSortAsc()
+                .stream()
+                .map(PhoneDtoMapper::toDto)
+                .collect(Collectors.toList());
+    }
 }
