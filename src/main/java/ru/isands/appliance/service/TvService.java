@@ -2,10 +2,12 @@ package ru.isands.appliance.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.isands.appliance.dto.TvDTO;
-import ru.isands.appliance.dto.model.TvModelDTO;
-import ru.isands.appliance.mapper.TvDtoMapper;
-import ru.isands.appliance.mapper.TvModelDtoMapper;
+import org.springframework.transaction.annotation.Transactional;
+import ru.isands.appliance.domain.Appliance;
+import ru.isands.appliance.dto.ApplianceDto;
+import ru.isands.appliance.dto.post.TvDto;
+import ru.isands.appliance.mapper.ApplianceToDtoMapper;
+import ru.isands.appliance.mapper.post.TvFromDtoMapper;
 import ru.isands.appliance.repository.TvRepository;
 
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author: Egor Bekhterev
- * @date: 22.04.2023
+ * @date: 24.04.2023
  * @project: isands_appliance_directory
  */
 @Service
@@ -22,24 +24,18 @@ public class TvService {
 
     private TvRepository tvRepository;
 
-    public List<TvDTO> findAll() {
-        return tvRepository.findAll()
+    public List<ApplianceDto> findAllTv() {
+        return tvRepository.findAllTv()
                 .stream()
-                .map(TvDtoMapper::toDto)
+                .map(ApplianceToDtoMapper::toDto)
                 .collect(Collectors.toList());
     }
 
-    public List<TvDTO> findByColor(String color) {
-        return tvRepository.findByColor(color)
-                .stream()
-                .map(TvDtoMapper::toDto)
-                .collect(Collectors.toList());
-    }
-
-    public List<TvModelDTO> findAllSortPriceAsc() {
-        return tvRepository.findAllSortByPriceAsc()
-                .stream()
-                .map(TvModelDtoMapper::toModelDto)
-                .collect(Collectors.toList());
+    @Transactional
+    public TvDto save(TvDto tvDto) {
+        Appliance rsl = TvFromDtoMapper.fromDto(tvDto);
+        rsl.setName("Телевизор");
+        tvRepository.save(rsl);
+        return tvDto;
     }
 }

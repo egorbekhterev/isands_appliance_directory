@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS tv_model
+CREATE TABLE IF NOT EXISTS model
 (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -7,7 +7,9 @@ CREATE TABLE IF NOT EXISTS tv_model
     size NUMERIC(5, 2) NOT NULL,
     price NUMERIC(10, 2) NOT NULL,
     available BOOLEAN NOT NULL,
-    category VARCHAR(255) NOT NULL,
-    technology VARCHAR(255) NOT NULL,
-    tv_id INT REFERENCES tv(id) NOT NULL
+    category VARCHAR(255),
+    technology VARCHAR(255),
+    memory INT,
+    camera INT,
+    appliance_id INT REFERENCES appliance(id) NOT NULL
 );

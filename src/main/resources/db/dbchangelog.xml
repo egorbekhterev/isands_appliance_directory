@@ -6,13 +6,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <include file="scripts/001_ddl_create_tv_table.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/002_ddl_create_tv_model_table.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/003_dml_insert_into_tv.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/004_dml_insert_into_tv_model.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/005_ddl_create_phone_table.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/006_ddl_create_phone_model_table.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/007_dml_insert_into_phone.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/008_dml_insert_into_phone_model.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/001_ddl_create_appliance_table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/002_ddl_create_model_table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/003_dml_insert_into_appliance.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/004_dml_insert_into_model.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

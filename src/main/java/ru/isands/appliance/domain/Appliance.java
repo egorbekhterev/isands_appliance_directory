@@ -1,10 +1,13 @@
 package ru.isands.appliance.domain;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author: Egor Bekhterev
@@ -13,28 +16,32 @@ import javax.persistence.*;
  */
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Schema(description = "Абстрактный класс с общими атрибутами для доменных моделей")
-@MappedSuperclass
-public abstract class Appliance {
+@Entity
+public class Appliance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    @Schema(description = "Идентификатор")
     private int id;
 
-    @Schema(description = "Наименование")
     private String name;
 
-    @Schema(description = "Страна производитель")
     private String country;
 
-    @Schema(description = "Фирма производитель")
     private String manufacturer;
 
-    @Schema(description = "Возможность заказа онлайн")
     private boolean online;
 
-    @Schema(description = "Возможность оформления рассрочки")
     private boolean instalment;
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "appliance")
+    private List<Model> models = new ArrayList<>();
+
+    @NonNull
+    public Appliance setModels(Collection<Model> models) {
+        models.forEach(model -> model.setAppliance(this));
+        this.models.clear();
+        this.models.addAll(models);
+        return this;
+    }
 }
