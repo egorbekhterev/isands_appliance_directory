@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.CrudRepository;
 import ru.isands.appliance.domain.Phone;
+import ru.isands.appliance.domain.model.PhoneModel;
 
 import javax.persistence.QueryHint;
 import java.util.List;
@@ -17,8 +18,8 @@ public interface PhoneRepository extends CrudRepository<Phone, Integer> {
 
     List<Phone> findAll();
 
-    @Query("SELECT p FROM Phone p JOIN FETCH p.models m ORDER BY m.price ASC")
-    List<Phone> findAllSortAsc();
+    @Query("SELECT m FROM PhoneModel m JOIN FETCH m.phone p ORDER BY m.price ASC")
+    List<PhoneModel> findAllSortByPriceAsc();
 
     @Query("SELECT DISTINCT p FROM Phone p JOIN FETCH p.models m WHERE LOWER(m.color) = LOWER(:color)")
     @QueryHints(value = @QueryHint(name = "org.hibernate.annotations.QueryHints.PASS_DISTINCT_THROUGH", value = "false"))

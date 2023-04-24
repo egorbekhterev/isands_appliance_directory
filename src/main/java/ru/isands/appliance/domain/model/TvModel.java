@@ -2,8 +2,11 @@ package ru.isands.appliance.domain.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import ru.isands.appliance.domain.TV;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,4 +25,8 @@ public class TvModel extends Model {
 
     @Schema(description = "Технология")
     private String technology;
+
+    @ManyToOne
+    @JoinColumn(name = "tv_id", nullable = false)
+    private TV tv;
 }

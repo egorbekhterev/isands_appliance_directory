@@ -2,8 +2,11 @@ package ru.isands.appliance.domain.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import ru.isands.appliance.domain.Phone;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,4 +25,8 @@ public class PhoneModel extends Model {
 
     @Schema(description = "Количество камер")
     private int camera;
+
+    @ManyToOne
+    @JoinColumn(name = "phone_id", nullable = false)
+    private Phone phone;
 }

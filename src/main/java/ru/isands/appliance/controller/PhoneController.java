@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.isands.appliance.dto.PhoneDTO;
+import ru.isands.appliance.dto.model.PhoneModelDTO;
 import ru.isands.appliance.service.PhoneService;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class PhoneController {
 
     @GetMapping("/sortPriceAsc")
     @Operation(summary = "Получить список всех смартфонов цена по возрастанию")
-    public ResponseEntity<List<PhoneDTO>> findAllSortPriceAsc() {
+    public ResponseEntity<List<PhoneModelDTO>> findAllSortPriceAsc() {
         return new ResponseEntity<>(phoneService.findAllSortPriceAsc(), HttpStatus.OK);
     }
 

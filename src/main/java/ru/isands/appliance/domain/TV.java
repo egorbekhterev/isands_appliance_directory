@@ -19,8 +19,7 @@ import java.util.List;
 @Table(name = "tv")
 public class TV extends Appliance {
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "tv_id")
+    @OneToMany(orphanRemoval = true, mappedBy = "tv")
     @Schema(description = "Модели телевизоров в наличии")
     private List<TvModel> models = new ArrayList<>();
 }

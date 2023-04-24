@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.isands.appliance.dto.TvDTO;
+import ru.isands.appliance.dto.model.TvModelDTO;
 import ru.isands.appliance.service.TvService;
 
 import java.util.List;
@@ -40,5 +41,11 @@ public class TvController {
         }
 
         return new ResponseEntity<>(tvs, HttpStatus.OK);
+    }
+
+    @GetMapping("/sortPriceAsc")
+    @Operation(summary = "Получить список всех телевизоров цена по возрастанию")
+    public ResponseEntity<List<TvModelDTO>> findAllSortPriceAsc() {
+        return new ResponseEntity<>(tvService.findAllSortPriceAsc(), HttpStatus.OK);
     }
 }

@@ -3,6 +3,7 @@ package ru.isands.appliance.dto.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import ru.isands.appliance.dto.AllDTO;
 
 /**
  * @author: Egor Bekhterev
@@ -25,4 +26,6 @@ public class AllModelDTO extends ModelDTO {
 
     @Schema(description = "Количество камер")
     private int camera;
+
+    private AllDTO allDTO;
 }

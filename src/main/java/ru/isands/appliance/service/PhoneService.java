@@ -3,7 +3,9 @@ package ru.isands.appliance.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.isands.appliance.dto.PhoneDTO;
+import ru.isands.appliance.dto.model.PhoneModelDTO;
 import ru.isands.appliance.mapper.PhoneDtoMapper;
+import ru.isands.appliance.mapper.PhoneModelDtoMapper;
 import ru.isands.appliance.repository.PhoneRepository;
 
 import java.util.List;
@@ -34,10 +36,10 @@ public class PhoneService {
               .collect(Collectors.toList());
     }
 
-    public List<PhoneDTO> findAllSortPriceAsc() {
-        return phoneRepository.findAllSortAsc()
+    public List<PhoneModelDTO> findAllSortPriceAsc() {
+        return phoneRepository.findAllSortByPriceAsc()
                 .stream()
-                .map(PhoneDtoMapper::toDto)
+                .map(PhoneModelDtoMapper::toModelDto)
                 .collect(Collectors.toList());
     }
 }

@@ -3,7 +3,9 @@ package ru.isands.appliance.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.isands.appliance.dto.TvDTO;
+import ru.isands.appliance.dto.model.TvModelDTO;
 import ru.isands.appliance.mapper.TvDtoMapper;
+import ru.isands.appliance.mapper.TvModelDtoMapper;
 import ru.isands.appliance.repository.TvRepository;
 
 import java.util.List;
@@ -31,6 +33,13 @@ public class TvService {
         return tvRepository.findByColor(color)
                 .stream()
                 .map(TvDtoMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<TvModelDTO> findAllSortPriceAsc() {
+        return tvRepository.findAllSortByPriceAsc()
+                .stream()
+                .map(TvModelDtoMapper::toModelDto)
                 .collect(Collectors.toList());
     }
 }
