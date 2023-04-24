@@ -1,6 +1,7 @@
 package ru.isands.appliance.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.isands.appliance.dto.ApplianceDto;
 import ru.isands.appliance.dto.ModelDto;
@@ -21,9 +22,10 @@ import java.util.stream.Collectors;
 public class ApplianceService {
 
     private ApplianceRepository applianceRepository;
+    private Pageable pageable;
 
     public List<ApplianceDto> findAll() {
-        return applianceRepository.findAll()
+        return applianceRepository.findAll(pageable)
                 .stream()
                 .map(ApplianceToDtoMapper::toDto)
                 .collect(Collectors.toList());
@@ -37,7 +39,28 @@ public class ApplianceService {
     }
 
     public List<ModelDto> findAllSortByPriceAsc() {
-        return applianceRepository.findAllSortByPriceAsc()
+        return applianceRepository.findAllSortByPriceAsc(pageable)
+                .stream()
+                .map(ModelToDtoMapper::toModelDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<ModelDto> findAllSortByPriceDesc() {
+        return applianceRepository.findAllSortByPriceDesc(pageable)
+                .stream()
+                .map(ModelToDtoMapper::toModelDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<ModelDto> findAllSortByNameAsc() {
+        return applianceRepository.findAllSortByNameAsc(pageable)
+                .stream()
+                .map(ModelToDtoMapper::toModelDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<ModelDto> findAllSortByNameDesc() {
+        return applianceRepository.findAllSortByNameDesc(pageable)
                 .stream()
                 .map(ModelToDtoMapper::toModelDto)
                 .collect(Collectors.toList());

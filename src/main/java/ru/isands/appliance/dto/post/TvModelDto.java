@@ -1,5 +1,6 @@
 package ru.isands.appliance.dto.post;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import ru.isands.appliance.dto.ModelAbstractDto;
 
@@ -13,9 +14,11 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class TvModelDto extends ModelAbstractDto {
 
+    @Schema(description = "Категория")
     @NotBlank
     private String category;
 
+    @Schema(description = "Технология")
     @NotBlank
     private String technology;
 }

@@ -1,5 +1,6 @@
 package ru.isands.appliance.dto.post;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import ru.isands.appliance.dto.ApplianceAbstractDto;
 
@@ -15,5 +16,6 @@ import java.util.List;
 public class TvDto extends ApplianceAbstractDto {
 
     @Valid
+    @Schema(description = "Список DTO моделей для телевизоров")
     private List<TvModelDto> models;
 }

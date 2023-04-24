@@ -49,4 +49,22 @@ public class ApplianceController {
     public ResponseEntity<List<ModelDto>> findAllSortByPriceAsc() {
         return new ResponseEntity<>(applianceService.findAllSortByPriceAsc(), HttpStatus.OK);
     }
+
+    @GetMapping("priceDesc")
+    @Operation(summary = "Получить список всей техники по убыванию цены")
+    public ResponseEntity<List<ModelDto>> findAllSortByPriceDesc() {
+        return new ResponseEntity<>(applianceService.findAllSortByPriceDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("nameAsc")
+    @Operation(summary = "Получить список всей техники, используя алфавитную сортировку по возрастанию")
+    public ResponseEntity<List<ModelDto>> findAllSortByNameAsc() {
+        return new ResponseEntity<>(applianceService.findAllSortByNameAsc(), HttpStatus.OK);
+    }
+
+    @GetMapping("nameDesc")
+    @Operation(summary = "Получить список всей техники, используя алфавитную сортировку по убыванию")
+    public ResponseEntity<List<ModelDto>> findAllSortByNameDesc() {
+        return new ResponseEntity<>(applianceService.findAllSortByNameDesc(), HttpStatus.OK);
+    }
 }
