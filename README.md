@@ -10,7 +10,7 @@
 
 ## Стек технологий
 
-- **Java 17.0.2**
+- **Java 8**
 - **Spring Boot 2.7.11**
 - **Spring Data JPA 2.7.11**
 - **Spring Validation 2.7.11**
@@ -26,7 +26,7 @@
 ## Требования к окружению
 
 - **Java 8**
-- **Maven 3.8.1**
+- **Maven 3.6.3**
 - **PostgresSQL 15**
 - **Postman**
 
@@ -52,7 +52,13 @@ docker-compose up -d
 - **Размер требуемых для запуска образов**
 ```
 postgres 379MB
-url_shortener 517MB
+appliance_directory 136MB
+```
+
+- **Для выполнения запросов использовать SwaggerAPI или Postman**
+
+``` 
+http://localhost/swagger-ui.html
 ```
 
 ## Используя Terminal
