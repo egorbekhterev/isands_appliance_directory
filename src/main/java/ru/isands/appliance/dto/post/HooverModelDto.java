@@ -6,6 +6,7 @@ import ru.isands.appliance.dto.ModelAbstractDto;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import java.math.BigDecimal;
 
 /**
  * @author: Egor Bekhterev
@@ -13,16 +14,16 @@ import javax.validation.constraints.Positive;
  * @project: isands_appliance_directory
  */
 @Data
-@Schema(description = "DTO для моделей смартфонов")
-public class PhoneModelDto extends ModelAbstractDto {
+@Schema(description = "DTO для моделей пылесосов")
+public class HooverModelDto extends ModelAbstractDto {
 
-    @Schema(description = "Память")
+    @Schema(description = "Объем пылесборника")
     @NotNull
     @Positive
-    private Integer memory;
+    private BigDecimal volume;
 
-    @Schema(description = "Количество камер")
+    @Schema(description = "Количество режимов")
     @NotNull
     @Positive
-    private Integer camera;
+    private Integer mode;
 }

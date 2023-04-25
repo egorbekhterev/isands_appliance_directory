@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @AllArgsConstructor
-public class PhoneService {
+public class PhoneService implements ApplianceModelService<ModelDto> {
 
     private PhoneRepository phoneRepository;
 
@@ -42,6 +42,7 @@ public class PhoneService {
         return phoneDto;
     }
 
+    @Override
     public List<ModelDto> findAllBySerialNumberIgnoreCase(String serialNumber) {
         return phoneRepository.findAllBySerialNumberIgnoreCase(serialNumber)
                 .stream()
@@ -49,6 +50,7 @@ public class PhoneService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public List<ModelDto> findAllByNameIgnoreCase(String name) {
         return phoneRepository.findAllByNameIgnoreCase(name)
                 .stream()
@@ -56,6 +58,7 @@ public class PhoneService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public List<ModelDto> findAllByColorIgnoreCase(String color) {
         return phoneRepository.findAllByColorIgnoreCase(color)
                 .stream()
@@ -63,6 +66,7 @@ public class PhoneService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public List<ModelDto> findAllBySizeIgnoreCase(BigDecimal size) {
         return phoneRepository.findAllBySizeIgnoreCase(size)
                 .stream()
@@ -70,6 +74,7 @@ public class PhoneService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public List<ModelDto> findAllByPriceIgnoreCase(BigDecimal price) {
         return phoneRepository.findAllByPriceIgnoreCase(price)
                 .stream()
@@ -77,6 +82,7 @@ public class PhoneService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public List<ModelDto> findAllByAvailable() {
         return phoneRepository.findAllByAvailable()
                 .stream()

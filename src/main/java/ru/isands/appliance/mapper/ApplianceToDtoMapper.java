@@ -26,6 +26,8 @@ public class ApplianceToDtoMapper {
         dto.setTechnology(model.getTechnology());
         dto.setMemory(model.getMemory());
         dto.setCamera(model.getCamera());
+        dto.setVolume(model.getVolume());
+        dto.setMode(model.getMode());
         return dto;
     }
 

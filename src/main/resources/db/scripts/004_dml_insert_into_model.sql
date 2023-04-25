@@ -13,3 +13,11 @@ INSERT INTO model (name, serial_number, color, size, price, available, memory, c
 ('Redmi Note 10 Pro', 'WZ-XYAB-86420-CDEF', 'Серый', 6.67, 21999, true, 128, 4, 5),
 ('Galaxy S23 Ultra', 'HI-JKLM-86420-NOPT', 'Черный', 6.8, 119999, true, 512, 4, 6),
 ('Galaxy S21 FE', 'UV-WXZY-86420-QRST', 'Черный', 6.4, 45999, false, 256, 3, 6);
+
+INSERT INTO model (name, serial_number, color, size, price, available, volume, mode, appliance_id) VALUES
+('PVC 2004RI', 'MN-OPQR-86420-STUV', 'Голубой', 5, 8999, true, 2.5, 1, 7),
+('PVC 1834 Silent', 'AB-CDEF-86420-GHIJ', 'Белый', 6, 10999, false, 1.7, 1, 7),
+('SC4570', 'KL-MNOP-86420-QRST', 'Черный', 6, 6999, true, 1.3, 1, 8),
+('SC4520', 'WZ-XYAB-86420-CDEF', 'Синий', 6, 8399, true, 1.3, 1, 8),
+('Twin Tiger', 'HI-JKLM-86420-NOPT', 'Оранжевый', 6, 18999, false, 4, 2, 9),
+('DRYBOX AMFIBIA FAMILY', 'UV-WXZY-86420-QRST', 'Черный', 8, 33999, true, 2.6, 2, 9);

@@ -13,6 +13,7 @@ import java.util.List;
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@Schema(description = "Класс с общими атрибутами для DTO техники")
 public class ApplianceDto extends ApplianceAbstractDto {
 
     @Schema(description = "Наименование")

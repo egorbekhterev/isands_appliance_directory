@@ -6,11 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.isands.appliance.domain.Appliance;
 import ru.isands.appliance.dto.ApplianceDto;
 import ru.isands.appliance.dto.ModelDto;
-import ru.isands.appliance.dto.post.TvDto;
+import ru.isands.appliance.dto.post.HooverDto;
 import ru.isands.appliance.mapper.ApplianceToDtoMapper;
 import ru.isands.appliance.mapper.ModelToDtoMapper;
-import ru.isands.appliance.mapper.post.TvFromDtoMapper;
-import ru.isands.appliance.repository.TvRepository;
+import ru.isands.appliance.mapper.post.HooverFromDtoMapper;
+import ru.isands.appliance.repository.HooverRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -23,28 +23,28 @@ import java.util.stream.Collectors;
  */
 @Service
 @AllArgsConstructor
-public class TvService implements ApplianceModelService<ModelDto> {
+public class HooverService implements ApplianceModelService<ModelDto> {
 
-    private TvRepository tvRepository;
+    private HooverRepository hooverRepository;
 
     public List<ApplianceDto> findAll() {
-        return tvRepository.findAll()
+        return hooverRepository.findAll()
                 .stream()
                 .map(ApplianceToDtoMapper::toDto)
                 .collect(Collectors.toList());
     }
 
     @Transactional
-    public TvDto save(TvDto tvDto) {
-        Appliance rsl = TvFromDtoMapper.fromDto(tvDto);
-        rsl.setName("Телевизор");
-        tvRepository.save(rsl);
-        return tvDto;
+    public HooverDto save(HooverDto hooverDto) {
+        Appliance rsl = HooverFromDtoMapper.fromDto(hooverDto);
+        rsl.setName("Пылесос");
+        hooverRepository.save(rsl);
+        return hooverDto;
     }
 
     @Override
     public List<ModelDto> findAllBySerialNumberIgnoreCase(String serialNumber) {
-        return tvRepository.findAllBySerialNumberIgnoreCase(serialNumber)
+        return hooverRepository.findAllBySerialNumberIgnoreCase(serialNumber)
                 .stream()
                 .map(ModelToDtoMapper::toModelDto)
                 .collect(Collectors.toList());
@@ -52,7 +52,7 @@ public class TvService implements ApplianceModelService<ModelDto> {
 
     @Override
     public List<ModelDto> findAllByNameIgnoreCase(String name) {
-        return tvRepository.findAllByNameIgnoreCase(name)
+        return hooverRepository.findAllByNameIgnoreCase(name)
                 .stream()
                 .map(ModelToDtoMapper::toModelDto)
                 .collect(Collectors.toList());
@@ -60,7 +60,7 @@ public class TvService implements ApplianceModelService<ModelDto> {
 
     @Override
     public List<ModelDto> findAllByColorIgnoreCase(String color) {
-        return tvRepository.findAllByColorIgnoreCase(color)
+        return hooverRepository.findAllByColorIgnoreCase(color)
                 .stream()
                 .map(ModelToDtoMapper::toModelDto)
                 .collect(Collectors.toList());
@@ -68,7 +68,7 @@ public class TvService implements ApplianceModelService<ModelDto> {
 
     @Override
     public List<ModelDto> findAllBySizeIgnoreCase(BigDecimal size) {
-        return tvRepository.findAllBySizeIgnoreCase(size)
+        return hooverRepository.findAllBySizeIgnoreCase(size)
                 .stream()
                 .map(ModelToDtoMapper::toModelDto)
                 .collect(Collectors.toList());
@@ -76,7 +76,7 @@ public class TvService implements ApplianceModelService<ModelDto> {
 
     @Override
     public List<ModelDto> findAllByPriceIgnoreCase(BigDecimal price) {
-        return tvRepository.findAllByPriceIgnoreCase(price)
+        return hooverRepository.findAllByPriceIgnoreCase(price)
                 .stream()
                 .map(ModelToDtoMapper::toModelDto)
                 .collect(Collectors.toList());
@@ -84,21 +84,21 @@ public class TvService implements ApplianceModelService<ModelDto> {
 
     @Override
     public List<ModelDto> findAllByAvailable() {
-        return tvRepository.findAllByAvailable()
+        return hooverRepository.findAllByAvailable()
                 .stream()
                 .map(ModelToDtoMapper::toModelDto)
                 .collect(Collectors.toList());
     }
 
-    public List<ModelDto> findAllByCategoryIgnoreCase(String category) {
-        return tvRepository.findAllByCategoryIgnoreCase(category)
+    public List<ModelDto> findAllByVolume(BigDecimal volume) {
+        return hooverRepository.findAllByVolume(volume)
                 .stream()
                 .map(ModelToDtoMapper::toModelDto)
                 .collect(Collectors.toList());
     }
 
-    public List<ModelDto> findAllByTechnologyIgnoreCase(String technology) {
-        return tvRepository.findAllByTechnologyIgnoreCase(technology)
+    public List<ModelDto> findAllByMode(int mode) {
+        return hooverRepository.findAllByMode(mode)
                 .stream()
                 .map(ModelToDtoMapper::toModelDto)
                 .collect(Collectors.toList());

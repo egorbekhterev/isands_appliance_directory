@@ -13,6 +13,7 @@ import java.util.List;
  * @project: isands_appliance_directory
  */
 @Data
+@Schema(description = "DTO для смартфонов")
 public class PhoneDto extends ApplianceAbstractDto {
 
     @Valid

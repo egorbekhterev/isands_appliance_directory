@@ -4,4 +4,7 @@ INSERT INTO appliance (name, country, manufacturer, online, instalment) VALUES
 ('Телевизор', 'Китай', 'TCL', false, true),
 ('Смартфон', 'Китай', 'Apple', true, true),
 ('Смартфон', 'Китай', 'Xiaomi', true, false),
-('Смартфон', 'Вьетнам', 'Samsung', false, true);
+('Смартфон', 'Вьетнам', 'Samsung', false, true),
+('Пылесос', 'Китай', 'Polaris', true, false),
+('Пылесос', 'Вьетнам', 'Samsung', true, true),
+('Пылесос', 'Германия', 'Thomas', true, true);

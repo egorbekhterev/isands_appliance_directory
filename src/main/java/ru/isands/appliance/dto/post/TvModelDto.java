@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
  * @project: isands_appliance_directory
  */
 @Data
+@Schema(description = "DTO для моделей телевизоров")
 public class TvModelDto extends ModelAbstractDto {
 
     @Schema(description = "Категория")

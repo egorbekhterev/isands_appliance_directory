@@ -11,5 +11,10 @@ CREATE TABLE IF NOT EXISTS model
     technology VARCHAR(255),
     memory INT,
     camera INT,
+    volume NUMERIC(5, 2),
+    mode INT,
+    door INT,
+    compressor VARCHAR(255),
+    processor VARCHAR(255),
     appliance_id INT REFERENCES appliance(id) NOT NULL
 );

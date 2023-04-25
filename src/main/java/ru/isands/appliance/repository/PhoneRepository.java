@@ -13,29 +13,35 @@ import java.util.List;
  * @date: 24.04.2023
  * @project: isands_appliance_directory
  */
-public interface PhoneRepository extends CrudRepository<Appliance, Integer> {
+public interface PhoneRepository extends CrudRepository<Appliance, Integer>, ApplianceModelRepository<Model> {
 
     @Query("SELECT a FROM Appliance a WHERE a.name = 'Смартфон'")
     List<Appliance> findAll();
 
     @Query("SELECT m FROM Model m JOIN FETCH m.appliance a WHERE a.name = 'Смартфон' AND LOWER(m.name) = LOWER(:name)")
+    @Override
     List<Model> findAllByNameIgnoreCase(String name);
 
     @Query("SELECT m FROM Model m JOIN FETCH m.appliance a WHERE a.name = 'Смартфон' "
             + "AND LOWER(m.serialNumber) = LOWER(:serialNumber)")
+    @Override
     List<Model> findAllBySerialNumberIgnoreCase(String serialNumber);
 
     @Query("SELECT m FROM Model m JOIN FETCH m.appliance a WHERE a.name = 'Смартфон' "
             + "AND LOWER(m.color) = LOWER(:color)")
+    @Override
     List<Model> findAllByColorIgnoreCase(String color);
 
     @Query("SELECT m FROM Model m JOIN FETCH m.appliance a WHERE a.name = 'Смартфон' AND m.size = :size")
+    @Override
     List<Model> findAllBySizeIgnoreCase(BigDecimal size);
 
     @Query("SELECT m FROM Model m JOIN FETCH m.appliance a WHERE a.name = 'Смартфон' AND m.price = :price")
+    @Override
     List<Model> findAllByPriceIgnoreCase(BigDecimal price);
 
     @Query("SELECT m FROM Model m JOIN FETCH m.appliance a WHERE a.name = 'Смартфон' AND m.available = true")
+    @Override
     List<Model> findAllByAvailable();
 
     @Query("SELECT m FROM Model m JOIN FETCH m.appliance a WHERE a.name = 'Смартфон' "

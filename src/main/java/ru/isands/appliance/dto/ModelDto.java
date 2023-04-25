@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.lang.Nullable;
 
+import java.math.BigDecimal;
 
 
 /**
@@ -14,7 +15,7 @@ import org.springframework.lang.Nullable;
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-@Schema(description = "Абстрактный класс с общими атрибутами для DTO моделей различных видов техники")
+@Schema(description = "Класс с общими атрибутами для DTO моделей различных видов техники")
 public class ModelDto extends ModelAbstractDto {
 
     @Nullable
@@ -32,6 +33,14 @@ public class ModelDto extends ModelAbstractDto {
     @Nullable
     @Schema(description = "Количество камер")
     private Integer camera;
+
+    @Nullable
+    @Schema(description = "Объем пылесборника")
+    private BigDecimal volume;
+
+    @Nullable
+    @Schema(description = "Количество режимов")
+    private Integer mode;
 
     @Schema(description = "DTO тип техники, соответствующий данной модели")
     private ApplianceDto appliance;

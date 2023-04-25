@@ -13,10 +13,10 @@ import java.util.List;
  * @project: isands_appliance_directory
  */
 @Data
-@Schema(description = "DTO для телевизоров")
-public class TvDto extends ApplianceAbstractDto {
+@Schema(description = "DTO для пылесосов")
+public class HooverDto extends ApplianceAbstractDto {
 
     @Valid
-    @Schema(description = "Список DTO моделей для телевизоров")
-    private List<TvModelDto> models;
+    @Schema(description = "Список DTO моделей для пылесосов")
+    private List<HooverModelDto> models;
 }

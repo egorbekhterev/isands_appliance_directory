@@ -29,7 +29,7 @@ public abstract class ModelAbstractDto {
     @Schema(description = "Цвет")
     private String color;
 
-    @Schema(description = "Размер (диагональ/)")
+    @Schema(description = "Размер (диагональ/длина сетевого шнура/)")
     private BigDecimal size;
 
     @Schema(description = "Цена")

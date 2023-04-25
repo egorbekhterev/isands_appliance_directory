@@ -41,6 +41,10 @@ public class Model {
 
     private Integer camera;
 
+    private BigDecimal volume;
+
+    private Integer mode;
+
     @ManyToOne
     @JoinColumn(name = "appliance_id", nullable = false)
     private Appliance appliance;
