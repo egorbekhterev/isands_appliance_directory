@@ -45,6 +45,12 @@ public class Model {
 
     private Integer mode;
 
+    private Integer door;
+
+    private String compressor;
+
+    private String processor;
+
     @ManyToOne
     @JoinColumn(name = "appliance_id", nullable = false)
     private Appliance appliance;

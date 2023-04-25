@@ -13,6 +13,7 @@ import ru.isands.appliance.dto.post.TvDto;
 import ru.isands.appliance.service.TvService;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -81,7 +82,7 @@ public class TvController {
 
     @GetMapping("/size")
     @Operation(summary = "Получить список телевизоров по размеру")
-    public ResponseEntity<List<ModelDto>> findAllBySize(@RequestParam BigDecimal size) {
+    public ResponseEntity<List<ModelDto>> findAllBySize(@Positive @RequestParam BigDecimal size) {
         List<ModelDto> list = tvService.findAllBySizeIgnoreCase(size);
 
         if (list.isEmpty()) {
@@ -93,7 +94,7 @@ public class TvController {
 
     @GetMapping("/price")
     @Operation(summary = "Получить список телевизоров по цене")
-    public ResponseEntity<List<ModelDto>> findAllByPrice(@RequestParam BigDecimal price) {
+    public ResponseEntity<List<ModelDto>> findAllByPrice(@Positive @RequestParam BigDecimal price) {
         List<ModelDto> list = tvService.findAllByPriceIgnoreCase(price);
 
         if (list.isEmpty()) {

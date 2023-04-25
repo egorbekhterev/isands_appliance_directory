@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS model
     name VARCHAR(255) NOT NULL,
     serial_number VARCHAR(255) NOT NULL,
     color VARCHAR(255) NOT NULL,
-    size NUMERIC(5, 2) NOT NULL,
+    size NUMERIC(8, 2) NOT NULL,
     price NUMERIC(10, 2) NOT NULL,
     available BOOLEAN NOT NULL,
     category VARCHAR(255),

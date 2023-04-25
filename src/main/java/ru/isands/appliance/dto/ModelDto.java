@@ -42,6 +42,18 @@ public class ModelDto extends ModelAbstractDto {
     @Schema(description = "Количество режимов")
     private Integer mode;
 
+    @Nullable
+    @Schema(description = "Количество дверей")
+    private Integer door;
+
+    @Nullable
+    @Schema(description = "Тип компрессора")
+    private String compressor;
+
+    @Nullable
+    @Schema(description = "Модель процессора")
+    private String processor;
+
     @Schema(description = "DTO тип техники, соответствующий данной модели")
     private ApplianceDto appliance;
 }

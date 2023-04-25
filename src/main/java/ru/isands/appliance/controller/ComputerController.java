@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.isands.appliance.dto.ApplianceDto;
 import ru.isands.appliance.dto.ModelDto;
-import ru.isands.appliance.dto.post.HooverDto;
-import ru.isands.appliance.service.HooverService;
+import ru.isands.appliance.dto.post.ComputerDto;
+import ru.isands.appliance.service.ComputerService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -24,30 +24,30 @@ import java.util.List;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/hoover")
-@Tag(name = "Пылесосы", description = "Контроллер для работы с пылесосами")
-public class HooverController {
+@RequestMapping("/computer")
+@Tag(name = "ПК", description = "Контроллер для работы с ПК")
+public class ComputerController {
 
-    private static final String NOT_FOUND = "Пылесосы не найдены, проверьте вводимую информацию";
+    private static final String NOT_FOUND = "ПК не найдены, проверьте вводимую информацию";
 
-    private HooverService hooverService;
+    private ComputerService computerService;
 
     @GetMapping
-    @Operation(summary = "Получить список всех пылесосов")
+    @Operation(summary = "Получить список всех ПК")
     public ResponseEntity<List<ApplianceDto>> findAll() {
-        return new ResponseEntity<>(hooverService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(computerService.findAll(), HttpStatus.OK);
     }
 
     @PostMapping
-    @Operation(summary = "Добавить пылесос в реестр")
-    public ResponseEntity<HooverDto> save(@Valid @RequestBody HooverDto hooverDto) {
-        return new ResponseEntity<>(hooverService.save(hooverDto), HttpStatus.OK);
+    @Operation(summary = "Добавить ПК в реестр")
+    public ResponseEntity<ComputerDto> save(@Valid @RequestBody ComputerDto computerDto) {
+        return new ResponseEntity<>(computerService.save(computerDto), HttpStatus.OK);
     }
 
     @GetMapping("/name")
-    @Operation(summary = "Получить список пылесосов по наименованию")
+    @Operation(summary = "Получить список ПК по наименованию")
     public ResponseEntity<List<ModelDto>> findAllByName(@RequestParam String name) {
-        List<ModelDto> list = hooverService.findAllByNameIgnoreCase(name);
+        List<ModelDto> list = computerService.findAllByNameIgnoreCase(name);
 
         if (list.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, NOT_FOUND);
@@ -57,9 +57,9 @@ public class HooverController {
     }
 
     @GetMapping("/serialNumber")
-    @Operation(summary = "Получить список пылесосов по серийному номеру")
+    @Operation(summary = "Получить список ПК по серийному номеру")
     public ResponseEntity<List<ModelDto>> findAllBySerialNumber(@RequestParam String serialNumber) {
-        List<ModelDto> list = hooverService.findAllBySerialNumberIgnoreCase(serialNumber);
+        List<ModelDto> list = computerService.findAllBySerialNumberIgnoreCase(serialNumber);
 
         if (list.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, NOT_FOUND);
@@ -69,9 +69,9 @@ public class HooverController {
     }
 
     @GetMapping("/color")
-    @Operation(summary = "Получить список пылесосов по цвету")
+    @Operation(summary = "Получить список ПК по цвету")
     public ResponseEntity<List<ModelDto>> findAllByColor(@RequestParam String color) {
-        List<ModelDto> list = hooverService.findAllByColorIgnoreCase(color);
+        List<ModelDto> list = computerService.findAllByColorIgnoreCase(color);
 
         if (list.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, NOT_FOUND);
@@ -81,9 +81,9 @@ public class HooverController {
     }
 
     @GetMapping("/size")
-    @Operation(summary = "Получить список пылесосов по размеру")
+    @Operation(summary = "Получить список ПК по размеру")
     public ResponseEntity<List<ModelDto>> findAllBySize(@Positive @RequestParam BigDecimal size) {
-        List<ModelDto> list = hooverService.findAllBySizeIgnoreCase(size);
+        List<ModelDto> list = computerService.findAllBySizeIgnoreCase(size);
 
         if (list.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, NOT_FOUND);
@@ -93,9 +93,9 @@ public class HooverController {
     }
 
     @GetMapping("/price")
-    @Operation(summary = "Получить список пылесосов по цене")
+    @Operation(summary = "Получить список ПК по цене")
     public ResponseEntity<List<ModelDto>> findAllByPrice(@Positive @RequestParam BigDecimal price) {
-        List<ModelDto> list = hooverService.findAllByPriceIgnoreCase(price);
+        List<ModelDto> list = computerService.findAllByPriceIgnoreCase(price);
 
         if (list.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, NOT_FOUND);
@@ -105,9 +105,9 @@ public class HooverController {
     }
 
     @GetMapping("/available")
-    @Operation(summary = "Получить список пылесосов по наличию")
+    @Operation(summary = "Получить список ПК по наличию")
     public ResponseEntity<List<ModelDto>> findAllByAvailable() {
-        List<ModelDto> list = hooverService.findAllByAvailable();
+        List<ModelDto> list = computerService.findAllByAvailable();
 
         if (list.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, NOT_FOUND);
@@ -116,10 +116,10 @@ public class HooverController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/volume")
-    @Operation(summary = "Получить список пылесосов по объему пылесборника")
-    public ResponseEntity<List<ModelDto>> findAllByVolume(@Positive @RequestParam BigDecimal volume) {
-        List<ModelDto> list = hooverService.findAllByVolume(volume);
+    @GetMapping("/category")
+    @Operation(summary = "Получить список ПК по категории")
+    public ResponseEntity<List<ModelDto>> findAllByCategory(@RequestParam String category) {
+        List<ModelDto> list = computerService.findAllByCategoryIgnoreCase(category);
 
         if (list.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, NOT_FOUND);
@@ -128,10 +128,10 @@ public class HooverController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping("/mode")
-    @Operation(summary = "Получить список пылесосов по количеству режимов работы")
-    public ResponseEntity<List<ModelDto>> findAllByMode(@Positive @RequestParam int mode) {
-        List<ModelDto> list = hooverService.findAllByMode(mode);
+    @GetMapping("/technology")
+    @Operation(summary = "Получить список ПК по технологии")
+    public ResponseEntity<List<ModelDto>> findAllByProcessor(@RequestParam String processor) {
+        List<ModelDto> list = computerService.findAllByProcessorIgnoreCase(processor);
 
         if (list.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, NOT_FOUND);

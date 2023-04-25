@@ -36,6 +36,9 @@ public class ModelToDtoMapper {
         dto.setCamera(model.getCamera());
         dto.setVolume(model.getVolume());
         dto.setMode(model.getMode());
+        dto.setDoor(model.getDoor());
+        dto.setCompressor(model.getCompressor());
+        dto.setProcessor(model.getProcessor());
         dto.setAppliance(toDto(model.getAppliance()));
         return dto;
     }

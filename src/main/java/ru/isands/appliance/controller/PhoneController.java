@@ -13,6 +13,7 @@ import ru.isands.appliance.dto.post.PhoneDto;
 import ru.isands.appliance.service.PhoneService;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -81,7 +82,7 @@ public class PhoneController {
 
     @GetMapping("/size")
     @Operation(summary = "Получить список смартфонов по размеру")
-    public ResponseEntity<List<ModelDto>> findAllBySize(@RequestParam BigDecimal size) {
+    public ResponseEntity<List<ModelDto>> findAllBySize(@Positive @RequestParam BigDecimal size) {
         List<ModelDto> list = phoneService.findAllBySizeIgnoreCase(size);
 
         if (list.isEmpty()) {
@@ -93,7 +94,7 @@ public class PhoneController {
 
     @GetMapping("/price")
     @Operation(summary = "Получить список смартфонов по цене")
-    public ResponseEntity<List<ModelDto>> findAllByPrice(@RequestParam BigDecimal price) {
+    public ResponseEntity<List<ModelDto>> findAllByPrice(@Positive @RequestParam BigDecimal price) {
         List<ModelDto> list = phoneService.findAllByPriceIgnoreCase(price);
 
         if (list.isEmpty()) {
@@ -117,7 +118,7 @@ public class PhoneController {
 
     @GetMapping("/memory")
     @Operation(summary = "Получить список смартфонов по памяти")
-    public ResponseEntity<List<ModelDto>> findAllByMemory(@RequestParam int memory) {
+    public ResponseEntity<List<ModelDto>> findAllByMemory(@Positive @RequestParam int memory) {
         List<ModelDto> list = phoneService.findAllByMemory(memory);
 
         if (list.isEmpty()) {
@@ -129,7 +130,7 @@ public class PhoneController {
 
     @GetMapping("/camera")
     @Operation(summary = "Получить список смартфонов по количеству камер")
-    public ResponseEntity<List<ModelDto>> findAllByCamera(@RequestParam int camera) {
+    public ResponseEntity<List<ModelDto>> findAllByCamera(@Positive @RequestParam int camera) {
         List<ModelDto> list = phoneService.findAllByCamera(camera);
 
         if (list.isEmpty()) {

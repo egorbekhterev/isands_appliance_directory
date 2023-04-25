@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 /**
@@ -29,9 +30,11 @@ public abstract class ModelAbstractDto {
     @Schema(description = "Цвет")
     private String color;
 
-    @Schema(description = "Размер (диагональ/длина сетевого шнура/)")
+    @Positive
+    @Schema(description = "Размер (диагональ, inch/длина сетевого шнура, м/полезный объем, л/объем SSD, Gb)")
     private BigDecimal size;
 
+    @Positive
     @Schema(description = "Цена")
     private BigDecimal price;
 
