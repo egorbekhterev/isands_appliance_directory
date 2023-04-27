@@ -83,7 +83,10 @@ http://localhost:8080/swagger-ui.html
 
 ## Взаимодействие с приложением
 
-![](images/1.png)
+![](images/2.png)
+![](images/3.png)
+![](images/4.png)
+![](images/5.png)
 
 ## Контакты для связи
 telegram: <a href="https://t.me/bekhterev_egor" target="blank">@bekhterev_egor</a>
